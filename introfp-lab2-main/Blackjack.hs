@@ -114,8 +114,13 @@ prop_size_fullDeck = size fullDeck == 52
 
 -- Task B2 --
 
+hand4 :: Hand
+hand4 = []
+
 draw :: Deck -> Hand -> (Deck, Hand)
-draw = undefined
+draw [] h = error "draw: The deck is empty." 
+draw (x:xs) h = (xs, x : h)
+draw d h = (d, (d !! 0) : h)
 
 -- Task B3 --
 
