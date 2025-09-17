@@ -120,7 +120,7 @@ hand4 = []
 draw :: Deck -> Hand -> (Deck, Hand)
 draw [] h = error "draw: The deck is empty." 
 draw (x:xs) h = (xs, x : h)
-draw d h = (d, (d !! 0) : h)
+--draw d h = (d, (d !! 0) : h)
 
 -- Task B3 --
 
