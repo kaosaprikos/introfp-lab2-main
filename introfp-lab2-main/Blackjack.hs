@@ -124,16 +124,22 @@ draw (x:xs) h = (xs, x : h)
 
 -- Task B3 --
 
-playBank :: Deck -> Hand
-playBank = undefined
+playBank :: Deck -> Hand -> Hand
+playBank d bh = if d == [] || value bh >= 16 then bh else playBank d' bh'
+    where (d', bh') = draw d bh
+
 
 -- Task B4 --
 
 pick :: Double -> Deck -> Card
-pick = undefined
+pick double deck = if ex deck == length deck then pick double deck else deck !! ex deck
+  where 
+    ex deck = floor(fromIntegral (length deck) * double)
+
 
 shuffle :: [Double] -> Deck -> Deck
-shuffle = undefined
+shuffle _ []     = []
+shuffle (y:ys) d = [pick y d] ++ shuffle ys [x | x <- d, x /= pick y d]
 
 runShuffle :: IO Deck
 runShuffle = do
