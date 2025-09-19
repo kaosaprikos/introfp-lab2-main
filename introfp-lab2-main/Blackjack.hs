@@ -157,9 +157,22 @@ prop_shuffle card deck (Rand randomlist) =
   card `belongsTo` deck == card `belongsTo` shuffle randomlist deck
 
 prop_size_shuffle :: Rand -> Deck -> Bool
-prop_size_shuffle (Rand randomlist) deck = undefined
+prop_size_shuffle (Rand randomlist) deck = length (shuffle randomlist deck) == length deck
 
 -- Task B6 --
 
+main :: IO ()
+main = runGame implementation
+
+implementation = Interface
+  {  iFullDeck  = fullDeck
+  ,  iValue     = value
+  ,  iDisplay   = display
+  ,  iGameOver  = gameOver
+  ,  iWinner    = winner
+  ,  iDraw      = draw
+  ,  iPlayBank  = playBank
+  ,  iShuffle   = shuffle
+  }
 -- follow the instructions on Canvas
 
